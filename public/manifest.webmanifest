@@ -1,0 +1,19 @@
+{
+  "name": "SN Pétanque Academy",
+  "short_name": "Academy",
+  "description": "Learn pétanque in five levels, in loving memory of Steve Noel: lessons, drills, practice sessions and your progress.",
+  "id": "./",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#eceeea",
+  "theme_color": "#1d6a54",
+  "lang": "en",
+  "categories": ["sports", "education"],
+  "icons": [
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

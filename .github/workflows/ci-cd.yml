@@ -1,5 +1,5 @@
 # Every push and pull request runs the tests.
-# A push to main that passes the tests is deployed automatically to GitHub Pages (academy.snpetanque.com).
+# A push to main that passes the tests is deployed automatically to GitHub Pages (https://samuelcblakey-ops.github.io/academy/).
 # The Firestore security rules are NOT deployed from here: they live in the competition desk repo (samuelcblakey-ops/carreau),
 # whose pipeline deploys them. tests/firestore.rules is a copy used only by the emulator tests below.
 name: CI/CD

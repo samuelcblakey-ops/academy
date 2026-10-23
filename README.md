@@ -2,7 +2,7 @@
 
 Learn pétanque in five levels (Entry, Beginners, Intermediate, Expert, Pro). Each level has lessons with YouTube videos, drills you score on your phone, and a practice session that unlocks the next level. Every drill, quiz and session is recorded, so a player (and the admin) can see attempts, passes, fails, bests and streaks. Companion to the [Competition desk](https://snpetanque.com). In loving memory of Steve Noel.
 
-Live at <https://academy.snpetanque.com> (once the one-time settings below are done).
+Live at <https://samuelcblakey-ops.github.io/academy/>.
 
 ## Layout
 
@@ -12,7 +12,7 @@ Live at <https://academy.snpetanque.com> (once the one-time settings below are d
 | `src/content/*.js` | **The curriculum, as data.** One file per level: lessons (text, video id, key points, quiz), drills (sets, boules, metric, pass mark, benchmarks) and the practice session (blocks and pass marks). Edit these to change what the Academy teaches; no app code needs to change. |
 | `src/app.js` | The app: level map, lessons, drill and precision-shooting runners, quizzes, practice sessions, progress, two languages. Saves to this device until the web layer replaces the store. |
 | `src/web-boot.js` | Website-only layer: Firebase progress store (anonymous sign-in, Google link, offline cache, multi-device merge), the admin page (`#/admin`), service worker and install prompt. |
-| `public/` | Static files copied into the site as-is (`firebase-config.js` is safe to publish; `CNAME` sets the custom domain). |
+| `public/` | Static files copied into the site as-is (`firebase-config.js` is safe to publish). |
 | `scripts/build.py` | Builds `dist/` (the website) from `src/` + `public/`. `scripts/icons.py` draws the icons. |
 | `tests/` | Browser tests. `app-*` need nothing; `web-*` run against the Firebase emulators. `tests/firestore.rules` is a **test copy** of the rules (see below). |
 
@@ -44,14 +44,12 @@ npm run test:app    # quick: app tests only, no Java needed
 npm run build       # just build dist/
 ```
 
-## One-time settings (do these once, in this order)
+## One-time settings
 
-1. **Publish the repo**: GitHub Desktop → *File → Add local repository* → this `academy` folder → *Publish repository* (public, name `academy`).
-2. **GitHub Pages**: repo *Settings → Pages → Source: GitHub Actions*. Then *Custom domain*: `academy.snpetanque.com`, and tick *Enforce HTTPS* once the certificate is issued.
-3. **DNS at GoDaddy**: add a CNAME record, host `academy`, pointing to `samuelcblakey-ops.github.io`. (The `public/CNAME` file tells Pages the domain; the DNS record tells browsers where to go.)
-4. **Protect `main`**: *Settings → Branches → Add rule* for `main`: require a pull request and require the `test` check to pass.
-5. **Firebase sign-in domain**: Firebase console → *Authentication → Settings → Authorised domains* → add `academy.snpetanque.com` (otherwise Google sign-in is refused on the new domain). Anonymous and Google sign-in are already on.
-6. **Rules**: merge the pull request that adds the `/academy` section to `firestore.rules` in the desk repo (its pipeline deploys the rules). Until that is live, the Academy site shows "Couldn't save your progress".
+1. **Publish the repo** (done): GitHub Desktop → *File → Add local repository* → this `academy` folder → *Publish repository* (public).
+2. **GitHub Pages** (done): repo *Settings → Pages → Source: GitHub Actions*. No custom domain: the site is served at `samuelcblakey-ops.github.io/academy/`, which is already an authorised sign-in domain in Firebase.
+3. **Protect `main`**: *Settings → Branches → Add classic branch protection rule* for `main`: require a pull request (no approvals needed) and require the `test` check to pass. GitHub asks you to confirm access by email first.
+4. **Rules**: the `/academy` section of `firestore.rules` is deployed from the desk repo (PR #22 there). Until it is live, the Academy site can't save progress.
 
 ## Content notes
 

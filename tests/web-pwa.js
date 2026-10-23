@@ -10,6 +10,6 @@ const WEB = process.env.WEB_URL;
   console.log(`manifest: ${JSON.stringify(m)}`);
   const sw = await p.evaluate(async () => { const reg = await navigator.serviceWorker.getRegistration(); if (!reg) return false; await navigator.serviceWorker.ready; return !!(reg.active || reg.installing || reg.waiting); });
   console.log(`service worker: ${sw}`);
-  console.log(`cname: ${(await p.evaluate(async () => (await fetch('CNAME')).text())).trim()}`);
+  console.log(`cname: ${(await p.evaluate(async () => (await fetch('CNAME')).status)) === 404 ? 'none' : 'present'}`); // no custom domain: the site lives at samuelcblakey-ops.github.io/academy/
   console.log('errs', errs); await b.close();
 })();

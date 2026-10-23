@@ -38,7 +38,7 @@ const SUITES = {
       /B signs back in: (signed-in|merged) lessons 2 attempts 2/, /errs \[\]/],
     'web-admin.js': [/visitor admin page: sign-in prompt true/, /visitor cannot list players: permission-denied/,
       /admin: players [3-9]\d* \| header PLAYER/, /admin sees sam@example.com: true \| a visitor row: true/, /errs \[\]/],
-    'web-pwa.js': [/manifest: \[true,"standalone",3,true,200,"image\/png",true\]/, /service worker: true/, /cname: academy\.snpetanque\.com/, /errs \[\]/],
+    'web-pwa.js': [/manifest: \[true,"standalone",3,true,200,"image\/png",true\]/, /service worker: true/, /cname: none/, /errs \[\]/],
   },
 };
 (async () => {
